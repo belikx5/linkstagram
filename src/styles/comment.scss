@@ -1,0 +1,38 @@
+@use './variables' as variables;
+
+.comment {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 12px 0;
+    font-size: variables.$secondary-font-size;
+    font-weight: normal;
+
+    div:first-child {
+        display: flex;
+    }
+    .comment-data {
+        display: flex;
+        flex-direction: column;
+        margin-left: 12px;
+        p { margin: 0; }
+        .comment-data-text {
+            align-self: baseline;
+        }
+        .comment-data-meta {
+            display: flex;
+            margin-top: 5px;
+            color: variables.$color-light-grey;
+            p:last-child {
+                margin-left: 24px;
+                font-weight: variables.$main-font-weight;
+            }
+        }
+    }
+    img:last-child {
+        height: 32px;
+        width: 32px;
+        align-self: baseline;
+    }
+}

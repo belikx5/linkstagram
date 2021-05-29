@@ -1,0 +1,29 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  .auth-img-container {
+    position: relative;
+    img {
+      user-select: none;
+      &:first-child {
+        width: 452px;
+        height: 684px;
+      }
+      &:last-child {
+        height: 212px;
+        width: 212px;
+        position: absolute;
+        top: 40%;
+        left: -22%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .auth {
+    .auth-img-container {
+      display: none;
+    }
+  }
+}
