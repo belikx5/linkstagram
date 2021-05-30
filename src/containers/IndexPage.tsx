@@ -23,6 +23,7 @@ import history from "../services/history";
 import Stories from "../components/Stories";
 import Posts from "../components/Posts";
 import UserCard from "./UserCard";
+import Slider from "../components/Slider";
 
 type IndexPageProps = {
   feed: UserPostHybrid[];
@@ -90,6 +91,7 @@ const IndexPage = (props: IndexPageProps) => {
       uid ? 
     <div className="main-container">
       <div className="main-container-posts">
+      {/* <Slider images={[`${process.env.PUBLIC_URL}/assets/default-user.png`, `${process.env.PUBLIC_URL}/assets/default-user.png` , `${process.env.PUBLIC_URL}/assets/google-icon.png`, `${process.env.PUBLIC_URL}/assets/facebook-icon.png`]}/> */}
         <Stories users={users} />
         <Posts feed={posts} />
       </div>

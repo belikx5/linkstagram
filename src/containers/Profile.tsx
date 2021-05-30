@@ -40,9 +40,10 @@ const Profile = (props: ProfileProps) => {
     useEffect(()=> {
         if(!currentUser){
             fetchUser()
-            fetchUserPosts()
-            // fetchUserFollowing()
+        fetchUserPosts()
         }
+        fetchUserPosts()
+
     }, [])
 
     const user = currentUser 
