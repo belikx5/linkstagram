@@ -1,0 +1,19 @@
+.post-details-page {
+  width: 100vw;
+  padding-top: 40px;
+  margin: 0 auto;
+  .post {
+    margin-bottom: 0;
+  }
+  .post-details-page-comments {
+    width: calc(100% - 20px);
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (min-width: 550px) {
+  .post-details-page {
+    width: 550px;
+    margin: 0 auto;
+  }
+}

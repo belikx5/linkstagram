@@ -1,0 +1,162 @@
+@use '../../../styles/variables' as variables;
+@use '../../../styles/common' as common;
+
+@mixin followersAndFollowing {
+  p {
+    margin: 0;
+    font-weight: 600;
+  }
+  p:last-child {
+    color: variables.$color-light-grey;
+    font-weight: variables.$secondary-font-weight;
+  }
+}
+
+@mixin cardActions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  button,
+  button.wide {
+    @include common.button;
+    width: 104px;
+  }
+  button.wide {
+    width: 100%;
+  }
+  button:first-child {
+    @include common.white-button-style;
+    margin-right: 15px;
+  }
+}
+
+.user-card {
+  @include common.noselect;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  max-width: 330px;
+  height: fit-content;
+  margin-top: variables.$main-content-margin-top;
+  text-align: center;
+  font-weight: variables.$secondary-font-weight;
+  .user-card-header {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 17px;
+
+    .user-card-header-image {
+      @include common.linear-border(20px);
+      margin: 0 20px;
+      border-radius: 20px;
+      height: variables.$user-icon-large;
+      img.user-image {
+        border: none;
+      }
+    }
+    .user-card-header-image-plus {
+      position: absolute;
+      right: 40%;
+      top: 85%;
+    }
+    .user-card-header-followers,
+    .user-card-header-following {
+      align-self: center;
+      @include followersAndFollowing();
+    }
+  }
+  .user-card-author-main {
+    font-weight: variables.$main-font-weight;
+  }
+  .user-card-author-description {
+    color: variables.$color-dark-grey;
+    font-size: variables.$secondary-font-size;
+    margin-top: 0;
+  }
+  .user-card-actions {
+    @include cardActions();
+  }
+  .user-card-terms p {
+    font-weight: 300;
+    font-size: variables.$secondary-font-size;
+    color: variables.$color-light-grey;
+    margin: 0;
+    &:first-child {
+      margin-top: 32px;
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .user-card {
+    max-width: 100%;
+    width: 90vw;
+  }
+}
+
+.user-card-profile {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 70px auto 0;
+
+  .user-card-left {
+    display: flex;
+    .user-card-header-image {
+      @include common.linear-border(20px);
+      margin: 0;
+      margin-right: 20px;
+      border-radius: 20px;
+      height: variables.$user-icon-ultra-large;
+      width: variables.$user-icon-ultra-large;
+      img.user-image.large {
+        height: 100%;
+        width: 100%;
+        border: none;
+      }
+    }
+    .user-card-left-data {
+      text-align: left;
+      max-width: 304px;
+      h3 {
+        margin: 0 0 10px;
+        font-size: 24px;
+      }
+      p {
+        margin: 0;
+        &.user-card-left-data-job {
+          color: #000000;
+        }
+        &.user-card-left-data-descr {
+          margin-top: 20px;
+          font-size: variables.$secondary-font-size;
+          color: variables.$color-dark-grey;
+        }
+      }
+    }
+  }
+
+  .user-card-right {
+    width: 300px;
+    .user-card-right-stats {
+      display: flex;
+      text-align: right;
+      justify-content: flex-end;
+      .user-card-header-followers,
+      .user-card-header-following {
+        @include followersAndFollowing();
+      }
+      .user-card-header-followers {
+        margin-right: 80px;
+      }
+    }
+
+    .user-card-right-actions {
+      margin-top: 24px;
+      @include cardActions();
+    }
+  }
+}

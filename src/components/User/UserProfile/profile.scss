@@ -1,0 +1,41 @@
+.profile {
+  width: 600px;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &.desktop {
+    width: 1070px;
+    .owner-posts {
+      margin-top: 38px;
+      column-gap: 2px;
+      row-gap: 2px;
+      .owner-posts-image {
+        height: 358px;
+        width: 358px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .profile {
+    width: 100vw;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .profile {
+    &.desktop {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .profile {
+    &.mobile {
+      display: none;
+    }
+  }
+}

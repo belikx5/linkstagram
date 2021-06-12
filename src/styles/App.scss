@@ -1,0 +1,27 @@
+@use './variables' as variables;
+
+body {
+    background-color: variables.$main-bacground-color;
+    font-family: variables.$font;
+    font-size: variables.$main-font-size;
+    color: variables.$main-font-color;
+    line-height: variables.$main-line-height;
+    font-weight: variables.$main-font-weight;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.App {
+    margin-top: variables.$navbar-height;
+
+}
+a {
+    text-decoration: none;
+    color: variables.$blue-color;
+}
+
+@media only screen and (max-width: 600px){
+    .App {
+        margin-top: 55px;
+    }
+}

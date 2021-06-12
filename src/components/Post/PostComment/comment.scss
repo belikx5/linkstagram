@@ -1,0 +1,79 @@
+@use '../../../styles/variables' as variables;
+@use '../../../styles/common' as common;
+
+.create-post-input {
+  display: flex;
+  height: 70px;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  padding: 0 10px;
+  border-bottom: 1px solid variables.$color-light-grey;
+  border-top: 1px solid variables.$color-light-grey;
+  .create-post-input_input-field {
+    @include common.disable-default-styles;
+    @include common.custom-scrollbar;
+    flex: 1;
+    resize: none;
+    padding-top: 25px;
+    overflow-y: scroll;
+  }
+  .create-post-input_action-button {
+    @include common.disable-default-styles;
+    @include common.hover-effect;
+    min-width: 35px;
+    width: fit-content;
+    padding: 0;
+    color: variables.$blue-color;
+    font-weight: variables.$main-font-weight;
+  }
+}
+
+.comment {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  padding: 12px 0;
+  font-size: variables.$secondary-font-size;
+  font-weight: normal;
+
+  div:first-child {
+    display: flex;
+  }
+  .comment-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+
+    &.showAuthor {
+      flex-direction: column-reverse;
+      .comment-data-meta {
+        margin-top: 0;
+      }
+    }
+    p {
+      margin: 0;
+    }
+    .comment-data-author {
+      font-weight: variables.$secondary-font-weight;
+      font-size: variables.$main-font-size;
+    }
+    .comment-data-text {
+      align-self: baseline;
+    }
+    .comment-data-meta {
+      display: flex;
+      margin-top: 5px;
+      opacity: 0.25;
+      p:last-child {
+        // margin-left: 24px;
+        font-weight: variables.$main-font-weight;
+      }
+    }
+  }
+  img:last-child {
+    height: 32px;
+    width: 32px;
+    align-self: baseline;
+  }
+}

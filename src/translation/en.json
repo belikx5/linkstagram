@@ -1,0 +1,50 @@
+{
+    "common": {
+        "logout": "Logout",
+        "cancel": "Cancel",
+        "post": "Post",
+        "save": "Save"
+    },
+    "userCard": {
+        "followers": "Followers",
+        "following": "Following",
+        "edit": "Edit profile",
+        "new": "New post",
+        "smallText": "About Help Privacy Terms Locations Language"
+    },
+    "navbar": {
+        "home": "Home"
+    },
+    "profile": {
+        "noPosts": "You don't have any posts",
+        "tryToAdd": "Try to add a new one 👌"
+    },
+    "auth": {
+        "login": "Log in",
+        "email": "Email",
+        "password": "Password",
+        "noAccount": "Don't have an account?",
+        "createAccount": "Create an account",
+        "signup": "Sign up",
+        "username": "User Name",
+        "alreadyHaveAcc": "Already have an account?"
+    },
+    "createPost": {
+        "upload": "Upload any photos from your library",
+        "description": "Description"
+    },
+    "editProfile": {
+        "profileInfo": "Profile information",
+        "avatar": "Avatar",
+        "choosePhoto": "Choose new photo",
+        "fName": "First Name",
+        "sName": "Second Name",
+        "job": "Job Title",
+        "description": "Description"
+    },
+    "post": {
+        "copied": "Copied to bufer",
+        "share": "Share",
+        "addComment": "Add a comment..."
+    }
+}

@@ -1,0 +1,16 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(151, 151, 151, 0.432);
+  z-index: 15;
+  .modal-content {
+    margin: 20vh auto;
+    min-width: 576px;
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+  }
+}

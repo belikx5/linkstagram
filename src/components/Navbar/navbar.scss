@@ -1,0 +1,103 @@
+@use '../../styles/variables' as variables;
+@use '../../styles/common' as common;
+
+.header {
+  @include common.noselect;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  width: 100vw;
+  height: variables.$navbar-height;
+  background-color: #fff;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+  .nav-options {
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto 64px;
+
+    & * {
+      align-self: center;
+    }
+    .header-title {
+      font-weight: 800;
+      line-height: 24px;
+      font-style: italic;
+      @include common.hover-effect;
+    }
+    .header-title-user-profile-pic {
+      @include common.hover-effect;
+    }
+    div.nav-options-main {
+      display: flex;
+
+      .home-button,
+      .some-button,
+      .lang-button,
+      .home-button.white {
+        @include common.button;
+        margin-right: 16px;
+        min-width: 85px;
+        max-width: 170px;
+        white-space: nowrap;
+        background: variables.$main-font-color;
+        border: variables.$icon-border;
+      }
+      .home-button.white,
+      .some-button.white {
+        @include common.white-button-style;
+        color: variables.$color-dark-grey;
+      }
+      .some-button.red {
+        color: variables.$red-color;
+        border-color: variables.$red-color;
+      }
+      .lang-button {
+        @include common.white-button-style;
+        min-width: 40px;
+        width: 40px;
+        font-weight: 600 !important;
+      }
+      .header-lang {
+        position: relative;
+        .header-lang-list {
+          position: absolute;
+          transform: translate(-20%, 37%);
+          .lang-button {
+            margin: 0;
+            width: auto;
+            height: auto;
+            padding: 20px 24px;
+            border: none;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+            border-radius: 0;
+            background: #ffffff;
+
+            border-radius: 0px 0px 12px 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    height: variables.$navbar-height-mobile;
+    .nav-options {
+      width: 100vw;
+      margin: auto 16px;
+      button.home-button {
+        display: none;
+      }
+      div.nav-options-main {
+        .header-lang .header-lang-list {
+          transform: translate(-20%, 24%);
+        }
+      }
+    }
+  }
+}

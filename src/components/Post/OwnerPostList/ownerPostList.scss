@@ -1,0 +1,55 @@
+@use '../../../styles/common' as common;
+
+.owner-posts {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: min-content min-content min-content;
+  grid-template-rows: min-content;
+  column-gap: 15px;
+  row-gap: 15px;
+  margin: 1vw auto;
+  margin-top: 24px;
+  width: 100%;
+
+  .owner-posts-image {
+    @include common.hover-effect;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .owner-posts-item.desktop {
+    display: none;
+  }
+  .owner-posts-item.mobile {
+    display: block;
+  }
+}
+@media only screen and (min-width: 950px) {
+  .owner-posts-item.desktop {
+    display: block;
+  }
+  .owner-posts-item.mobile {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .owner-posts {
+    column-gap: 2px;
+    row-gap: 2px;
+    .owner-posts-image {
+      width: 113px;
+      height: 113px;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .owner-posts {
+    .owner-posts-image {
+      width: 88px;
+      height: 88px;
+    }
+  }
+}

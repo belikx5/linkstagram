@@ -1,0 +1,83 @@
+@use '../../../styles/variables' as variables;
+@use '../../../styles/common' as common;
+
+.create-post-form {
+  @include common.form;
+  .slider  {
+    height: auto;
+    width: auto;
+    max-height: 570px;
+    max-width: 500px;
+  }
+  .create-post-file-loader {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  .create-post-file-loader + label {
+    display: inline-block;
+    width: 100%;
+    height: 345px;
+    border-radius: variables.$border-radius-12;
+    background-color: variables.$color-light-grey;
+    color: #fff;
+    font-weight: variables.$secondary-font-weight;
+    transition: all 250ms ease-in;
+    .file-loader-label-inner {
+      display: flex;
+      flex-direction: column;
+      margin: 130px auto;
+      align-items: center;
+      img {
+        height: 80px;
+        width: 80px;
+        margin-bottom: 24px;
+      }
+    }
+    .file-loader-label-inner.max-size {
+      margin: 20px auto;
+      position: relative;
+      img.max-size {
+        position: absolute;
+        height: 300px;
+        width: 350px;
+        border-radius: variables.$border-radius-12;
+      }
+    }
+  }
+  .create-post-file-loader:focus + label,
+  .create-post-file-loader + label:hover {
+    cursor: pointer;
+    color: variables.$blue-color;
+  }
+  .create-form-item {
+    display: flex;
+    flex-direction: column;
+    margin: 31px 0;
+    .create-post-form-label {
+      @include common.label-for-input;
+    }
+    .create-post-form-textarea {
+      @include common.input-textarea;
+    }
+  }
+  .create-form-actions {
+    display: flex;
+    .create-form-action-button {
+      @include common.button;
+    }
+    button:first-child {
+      @include common.white-button-style;
+      margin-right: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .create-post-form.page {
+    background-color: transparent;
+  }
+}

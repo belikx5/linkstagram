@@ -1,0 +1,30 @@
+.main-container {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    margin-right: 40vw;
+    width: 560px;
+    height: 100vh;
+    &.unauthorized {
+        margin: 0 auto;
+    }
+    .aside-user-card {
+        position: absolute;
+        right: -23vw;
+    }
+}
+@media (max-width: 1050px){
+    .main-container {
+        margin: 0 auto;
+        .aside-user-card {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .main-container {
+        margin: 0;
+        width: 100vw;
+    }
+}

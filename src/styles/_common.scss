@@ -1,0 +1,137 @@
+@use './variables' as variables;
+
+@mixin button {
+    border-radius: variables.$border-radius-12;
+    height: 40px;
+    width: 100%;
+    background-color: variables.$blue-color;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: variables.$font;
+    font-weight: variables.$secondary-font-weight;
+    font-size:  variables.$main-font-size;
+    &:hover {
+        cursor: pointer;
+    }
+    &:disabled {
+        background-color: variables.$color-dark-grey;
+    }
+}
+
+@mixin white-button-style {
+    background-color: #fff;
+    color: variables.$main-font-color;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+}
+
+@mixin custom-scrollbar {
+    &::-webkit-scrollbar {
+        width: 10px;  
+        height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;  
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: lightgray;
+        border-radius: 5px;
+        border: none;  
+    }
+}
+
+@mixin label-for-input {
+    color: variables.$color-dark-grey;
+    font-size: variables.$secondary-font-size;
+    font-weight: variables.$secondary-font-weight;
+}
+
+@mixin input-text {
+    height: 38px;
+    padding: 0 14px;
+    border-radius: variables.$border-radius-12;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+    color: variables.$main-font-color;
+    font-size: variables.$main-font-size;
+    font-weight: variables.$main-font-weight;
+    font-family: variables.$font;
+}
+
+@mixin input-textarea {
+    @include input-text;
+    @include custom-scrollbar;
+    height: 68px;
+    resize: none;
+    padding-top: 14px;
+}
+
+@mixin form-item-with-validation {
+    @include input-text;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    .form-item-text-input {
+        @include input-text;
+        box-shadow: none;
+        width: 100%;
+        padding: 0;
+    }
+    .form-item-validation-image {
+        height: 16px;
+        width: 16px;
+    }
+    .form-item-validation-image.hidden {
+        visibility: hidden;
+    }
+}
+
+@mixin form {
+    height: auto;
+    max-width: 480px;
+    padding:38px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+@mixin linear-border($border-radius-arg) {
+    position: relative;
+    height: 85%;
+    border-radius: $border-radius-arg;
+    background: #fff;
+    padding: 2px;
+    &::before {
+        position: absolute;
+        top: -2px; bottom: -2px;
+        left: -2px; right: -2px;
+        background: variables.$linear-gradient;
+        content: '';
+        z-index: -1;
+        border-radius: $border-radius-arg;
+    }
+}
+
+@mixin disable-default-styles {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: variables.$main-font-size;
+    line-height: variables.$main-line-height;
+  }
+
+@mixin noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+
+@mixin hover-effect {
+    &:hover {
+        cursor: pointer;
+    }
+}

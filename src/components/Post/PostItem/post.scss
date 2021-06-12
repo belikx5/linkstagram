@@ -1,0 +1,137 @@
+@use '../../../styles/variables' as variables;
+@use '../../../styles/common' as common;
+
+.post {
+  margin-bottom: 48px;
+  .post-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    div {
+      display: flex;
+      .post-header-data {
+        margin-left: 16px;
+        flex-direction: column;
+        width: fit-content;
+        p {
+          margin: 0;
+        }
+        p:last-child {
+          font-size: variables.$secondary-font-size;
+          opacity: 0.25;
+        }
+      }
+    }
+    .post-header-menu {
+      @include common.noselect;
+      @include common.hover-effect;
+    }
+  }
+  .post-image,
+  .post-copied-bufer {
+    width: 100%;
+    height: 100%;
+    border-radius: variables.$border-radius-48;
+    @include common.hover-effect;
+  }
+  .post-image-block {
+    position: relative;
+    img {
+      border-radius: variables.$border-radius-48;
+    }
+    // .post-details-button desktop
+  }
+  .post-copied-bufer {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(1, 1, 1, 0.5);
+    backdrop-filter: blur(12px);
+    animation: CopiedToBufer 1.2s ease-out;
+    .post-copied-bufer-text {
+      font-size: 20px;
+      color: #fff;
+      margin-left: 10px;
+    }
+  }
+  .post-description {
+    margin-bottom: 0;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: variables.$color-dark-grey;
+    font-weight: variables.$secondary-font-weight;
+  }
+  .post-actions {
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-weight: 600;
+    }
+    div:first-child {
+      display: flex;
+      .post-action.comment-action {
+        margin-left: 40px;
+      }
+    }
+    .post-action {
+      display: flex;
+      img:first-child,
+      p:first-child {
+        margin-right: 8px;
+      }
+      @include common.hover-effect;
+    }
+  }
+}
+
+@keyframes CopiedToBufer {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .post {
+    width: calc(100vw - 20px);
+    padding: 0 10px;
+    margin-bottom: 18px;
+    .post-header {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .post {
+    .post-details-button.desktop {
+      display: none;
+    }
+    .post-details-button.mobile {
+      display: flex;
+    }
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .post {
+    .post-details-button.desktop {
+      display: flex;
+    }
+    .post-details-button.mobile {
+      display: none;
+    }
+  }
+}

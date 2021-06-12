@@ -1,0 +1,58 @@
+@use '../../styles/variables' as variables;
+@use '../../styles/common' as common;
+
+.stories {
+  @include common.noselect;
+  position: relative;
+  top: variables.$main-content-margin-top;
+  width: 560px;
+  height: 78px;
+  margin-bottom: 80px;
+  .stories-container {
+    @include common.custom-scrollbar;
+    height: 100%;
+    display: flex;
+    overflow-x: scroll;
+    padding-top: 5px;
+    padding-left: 3px;
+  }
+  &::after {
+    content: "";
+    display: block;
+    width: fit-content;
+    height: 90%;
+    width: 10%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      rgb(255, 255, 255)
+    );
+    opacity: 0.8;
+    z-index: 0;
+  }
+
+  .story {
+    @include common.linear-border(16px);
+    margin-right: 20px;
+    img {
+      border: none;
+    }
+  }
+  .empty-story {
+    height: 50px;
+    p {
+      width: 30px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .stories {
+    width: 94vw;
+    padding: 0 10px;
+  }
+}

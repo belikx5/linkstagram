@@ -1,0 +1,63 @@
+@use "../../styles/variables" as vars;
+.slider {
+  height: 580px;
+  width: 560px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &.postDetails {
+    img {
+      border-top-left-radius: vars.$border-radius-32;
+      border-bottom-left-radius: vars.$border-radius-32;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .slider-controls {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    .slider-controls-left,
+    .slider-controls-right {
+      position: absolute;
+      top: 45%;
+      padding: 9px;
+      border-radius: 35%;
+      background-color: #fff;
+    }
+    .slider-controls-left {
+      left: 5px;
+    }
+    .slider-controls-right {
+      right: 5px;
+    }
+    .slider-controls-dots {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: absolute;
+      bottom: 5%;
+      .slider-controls-dot {
+        margin-right: 12px;
+        margin-bottom: 3px;
+      }
+    }
+    .slider-controls-dot,
+    .slider-controls-right,
+    .slider-controls-left {
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .slider {
+    width: calc(100vw - 20px);
+    height: 100vw;
+  }
+}

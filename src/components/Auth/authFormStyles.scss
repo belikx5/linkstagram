@@ -1,0 +1,94 @@
+@use '../../styles/variables' as variables;
+@use '../../styles/common' as common;
+
+.auth-form {
+  @include common.form;
+  width: 360px;
+  padding-top: 0;
+  margin: 0 0;
+  margin-top: 70px;
+  background-color: transparent;
+  h1 {
+      font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 48px;
+    line-height: 72px;
+  }
+  .auth-form-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    .auth-form-item-label {
+      @include common.label-for-input;
+    }
+    .auth-form-item-input,
+    .auth-form-item-with-validation {
+      @include common.input-text;
+    }
+    .auth-form-item-with-validation {
+      @include common.form-item-with-validation;
+    }
+  }
+
+  .auth-form-actions {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: variables.$secondary-font-size;
+    font-weight: variables.$secondary-font-weight;
+    .auth-form-actions-error-message {
+      color: #fb766e;
+      margin: 0;
+    }
+    p {
+      margin-bottom: 30px;
+    }
+    button {
+      @include common.button;
+    }
+
+    div.auth-form-actions-providers {
+      display: flex;
+      justify-content: space-between;
+    }
+    .auth-form-actions-alternative {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include common.white-button-style;
+      width: 100%;
+      border-radius: variables.$border-radius-12;
+      button {
+        @include common.white-button-style;
+        font-size: 13px;
+        box-shadow: none;
+        width: fit-content;
+      }
+      img {
+        height: 32px;
+        width: 32px;
+      }
+    }
+    .auth-form-actions-alternative:first-child {
+      margin-right: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .auth-form {
+    h1 {
+      font-size: 32px;
+      line-height: 48px;
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+    .auth-form-actions {
+      width: calc(100% - 76px);
+      position: absolute;
+      bottom: 80px;
+      justify-content: center;
+      flex-direction: column-reverse;
+    }
+  }
+}

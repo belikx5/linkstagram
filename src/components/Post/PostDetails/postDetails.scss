@@ -1,0 +1,98 @@
+@use '../../../styles/variables' as variables;
+@use '../../../styles/common' as common;
+
+@mixin horizontal-padding {
+  padding: 0 32px;
+}
+
+@mixin border-bottom {
+  border-bottom: 0.5px solid variables.$color-light-grey;
+}
+
+.post-details {
+  width: auto;
+  display: flex;
+  background-color: #fff;
+  width: fit-content;
+  border-radius: variables.$border-radius-32;
+  .post-details-image {
+    height: auto;
+    width: auto;
+    max-height: 580px;
+    max-width: 500px;
+    border-top-left-radius: variables.$border-radius-32;
+    border-bottom-left-radius: variables.$border-radius-32;
+  }
+  .post-details-data {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    padding-top: 5px;
+
+    .post-details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include horizontal-padding;
+      @include border-bottom;
+      div:first-child {
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 16px;
+        }
+      }
+      .post-details-header-close {
+        @include common.hover-effect;
+      }
+    }
+    .post-details-comments {
+      @include horizontal-padding;
+      @include border-bottom;
+      @include common.custom-scrollbar;
+      height: 380px;
+      overflow-y: scroll;
+    }
+    .post-details-likes {
+      @include horizontal-padding;
+      @include border-bottom;
+      display: flex;
+      align-items: center;
+      height: 64px;
+      img {
+        margin-right: 8px;
+      }
+    }
+    .post-details-actions {
+      @include horizontal-padding;
+      display: flex;
+      height: 70px;
+      .post-details-input-field {
+        @include common.disable-default-styles;
+        @include common.custom-scrollbar;
+        flex: 1;
+        resize: none;
+        padding-top: 25px;
+        overflow-y: scroll;
+      }
+      .post-details-action-button {
+        @include common.disable-default-styles;
+        @include common.hover-effect;
+        min-width: 35px;
+        width: fit-content;
+        padding: 0;
+        color: variables.$blue-color;
+        font-weight: variables.$main-font-weight;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .post-details {
+    width: 100vw;
+    .post-details-image {
+      display: none;
+    }
+  }
+}

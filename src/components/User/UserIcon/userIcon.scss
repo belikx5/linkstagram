@@ -1,0 +1,30 @@
+@use '../../../styles/variables' as variables;
+@use '../../../styles/common' as common;
+
+%image-shared {
+  @include common.noselect;
+  width: variables.$user-icon-small;
+  height: variables.$user-icon-small;
+  border-radius: variables.$border-radius-12;
+  border: variables.$icon-border;
+  object-fit: cover;
+}
+.user-image {
+  @extend %image-shared;
+}
+
+.user-image.small {
+  @extend %image-shared;
+}
+
+.user-image.medium {
+  @extend %image-shared;
+  width: variables.$user-icon-medium;
+  height: variables.$user-icon-medium;
+}
+
+.user-image.large {
+  width: variables.$user-icon-large;
+  height: variables.$user-icon-large;
+  border-radius: variables.$border-radius-20;
+}
