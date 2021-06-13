@@ -34,7 +34,18 @@ const AuthForm = (props: AuthFormprops) => {
       ? dispatch(signup(nickname, email, password))
       : dispatch(signin(email, password));
   };
-
+  const showValidationError = (field: string) => {
+    switch(field) {
+      case "email":
+        return validationErrors.email ? validationErrors.email : null;
+      case "password":
+        return validationErrors.password ? validationErrors.password : null;
+      case "nickname":
+        return validationErrors.nickname ? validationErrors.nickname : null;
+      default: 
+      return null;
+    }
+  }
   const onBlur = (fieldName: string, value: string) => {
     const res = validate(fieldName, value);
     if (res) setValidationErrors({ ...validationErrors, [fieldName]: res });
@@ -128,6 +139,9 @@ const AuthForm = (props: AuthFormprops) => {
           {authError.error && (
             <p className="auth-form-actions-error-message">{authError.error} {authError.fieldError[1] ? "- " + authError.fieldError[1] : ""}</p>
           )}
+          <p className="auth-form-actions-error-message">{showValidationError("email")}</p>
+          <p className="auth-form-actions-error-message">{showValidationError("password")}</p>
+          <p className="auth-form-actions-error-message">{showValidationError("nickname")}</p>
           <button
             onClick={handleSubmit}
             disabled={

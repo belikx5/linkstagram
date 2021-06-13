@@ -7,6 +7,7 @@ import {
   addComment,
   removeLike,
   setLike,
+  setPostActionError,
 } from "../../../store/actions/postActions";
 import { Post } from "../../../store/actionTypes/postActionTypes";
 import { sortCommentsDesc } from "../../../services/sorting";
@@ -30,7 +31,7 @@ const PostDetails = ({ postData, openModal }: PostDetailsProps) => {
     if (text.trim()) {
       dispatch(addComment(postData.id, text));
       setText("");
-    }
+    } else dispatch(setPostActionError("Comment can't be empty"));
   };
   const onLikeClick = () => {
     postData.is_liked
@@ -41,7 +42,7 @@ const PostDetails = ({ postData, openModal }: PostDetailsProps) => {
   const requireAuthForAction = (action: Function) => {
     if (currentUser?.username) {
       action();
-    } else return;
+    } else dispatch(setPostActionError("Login to perform this action"));
   };
 
   return (

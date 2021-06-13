@@ -29,7 +29,8 @@ function ErrorAlert({
     <Snackbar
       open={isAlertOpen}
       autoHideDuration={autoHideTime}
-      onClose={handleClose}>
+      onClose={handleClose}
+      className="error-alert-message">
       <Alert onClose={handleClose} severity="error">
         {error}
       </Alert>

@@ -57,12 +57,8 @@ const Navbar = () => {
           </button>
         );
       case "/":
-      case "/profile":
         return (
           <>
-            <button onClick={() => history.push("/")} className="home-button">
-              {t("navbar.home")}
-            </button>
             <LanguagesMenu i18n={i18n} />
             <Link to="/profile" className="header-title-user-profile-pic">
               <UserIcon
@@ -70,6 +66,20 @@ const Navbar = () => {
                 size={UserIconSize.Small}
               />
             </Link>
+          </>
+        );
+      case "/profile":
+        return (
+          <>
+            <button onClick={() => history.push("/")} className="home-button">
+              {t("navbar.home")}
+            </button>
+            <LanguagesMenu i18n={i18n} />
+            <button
+              onClick={() => dispatch(logout())}
+              className="some-button white red">
+              {t("common.logout")}
+            </button>
           </>
         );
       case "/signup":

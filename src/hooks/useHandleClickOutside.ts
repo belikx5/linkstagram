@@ -4,7 +4,12 @@ export const useHandleClickOutside = (setIsOpen: (val: boolean) => void) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: any) => {
-    if (containerRef.current && !containerRef.current.contains(event.target)) {
+    const alertMessage = document.querySelector(".error-alert-message");
+    if (
+      containerRef.current &&
+      !containerRef.current.contains(event.target) &&
+      ((alertMessage && !alertMessage.contains(event.target)) || !alertMessage)
+    ) {
       setIsOpen(false);
     }
   };

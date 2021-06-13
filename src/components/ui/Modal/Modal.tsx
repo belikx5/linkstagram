@@ -1,9 +1,9 @@
 import "./modal.scss";
-import React, { useEffect, useRef, FunctionComponent } from "react";
-import ReactDOM from "react-dom";
+import React, { FunctionComponent } from "react";
+import { useHandleClickOutside } from "../../../hooks/useHandleClickOutside";
 
 type ModalProps = {
-  openModal: Function;
+  openModal: (val: boolean) => void;
   modalMarginTop: number;
 };
 
@@ -12,25 +12,14 @@ const Modal: FunctionComponent<ModalProps> = ({
   openModal,
   modalMarginTop,
 }) => {
-  const mainBlockRef = useRef<HTMLDivElement>(null);
-  const handleClickOutside = (event: any) => {
-    if (mainBlockRef.current && !mainBlockRef.current.contains(event.target)) {
-      openModal(false);
-    }
-  };
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [mainBlockRef]);
+  const [containerRef] = useHandleClickOutside(openModal);
 
   return (
     <div className="modal">
       <div
         className="modal-content"
         style={{ margin: `${modalMarginTop}vh auto` }}
-        ref={mainBlockRef}>
+        ref={containerRef}>
         {children}
       </div>
     </div>

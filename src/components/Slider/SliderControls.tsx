@@ -26,48 +26,53 @@ function SliderControls({
   const dotsRef = useRef<SVGSVGElement>(null);
   const handleImageClick = (e: any) => {
     if (
-      controlsRef.current &&
-      dotsRef.current &&
-      !controlsRef.current?.contains(e.target) &&
-      !dotsRef.current?.contains(e.target)
+      (controlsRef.current &&
+        dotsRef.current &&
+        !controlsRef.current.contains(e.target) &&
+        !dotsRef.current.contains(e.target)) ||
+      (!controlsRef.current && !dotsRef.current)
     )
       onImageClick && onImageClick();
   };
-  return dotsCount > 1 ? (
+  return (
     <div className="slider-controls" onClick={handleImageClick}>
-      <div ref={controlsRef}>
-        <SliderLeft
-          onClick={() => onPrevClick()}
-          className="slider-controls-left"
-        />
-      </div>
-      <div ref={controlsRef}>
-        <SliderRight
-          onClick={() => onNextClick()}
-          className="slider-controls-right"
-        />
-      </div>
+      {dotsCount > 1 ? (
+        <>
+          <div ref={controlsRef}>
+            <SliderLeft
+              onClick={() => onPrevClick()}
+              className="slider-controls-left"
+            />
+          </div>
+          <div ref={controlsRef}>
+            <SliderRight
+              onClick={() => onNextClick()}
+              className="slider-controls-right"
+            />
+          </div>
 
-      <div className="slider-controls-dots">
-        {Array.from(Array(dotsCount).keys()).map((dot) =>
-          dot === activeDot ? (
-            <DotActive
-              key={dot}
-              ref={dotsRef}
-              className="slider-controls-dot"
-            />
-          ) : (
-            <Dot
-              key={dot}
-              ref={dotsRef}
-              className="slider-controls-dot"
-              onClick={() => onGotoClick(dot)}
-            />
-          )
-        )}
-      </div>
+          <div className="slider-controls-dots">
+            {Array.from(Array(dotsCount).keys()).map((dot) =>
+              dot === activeDot ? (
+                <DotActive
+                  key={dot}
+                  ref={dotsRef}
+                  className="slider-controls-dot"
+                />
+              ) : (
+                <Dot
+                  key={dot}
+                  ref={dotsRef}
+                  className="slider-controls-dot"
+                  onClick={() => onGotoClick(dot)}
+                />
+              )
+            )}
+          </div>
+        </>
+      ) : null}
     </div>
-  ) : null;
+  );
 }
 
 export default SliderControls;

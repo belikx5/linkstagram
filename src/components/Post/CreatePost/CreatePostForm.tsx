@@ -4,7 +4,10 @@ import history from "../../../services/history";
 import Slider from "../../Slider";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../../store/actions/postActions";
+import {
+  createPost,
+  setPostActionError,
+} from "../../../store/actions/postActions";
 import { useLocation } from "react-router";
 import uppy, { createObjectsForApi } from "../../../services/uppy";
 
@@ -38,7 +41,7 @@ const CreatePostForm = ({ setModalOpen }: CreateFormProps) => {
     if (files.length) {
       setFileLoading(true);
       (async () => {
-        files.forEach(file => {
+        files.forEach((file) => {
           const { name, type } = file;
           uppy.addFile({
             name,
@@ -46,7 +49,7 @@ const CreatePostForm = ({ setModalOpen }: CreateFormProps) => {
             data: file,
             source: "cache",
           });
-        })
+        });
         const { successful }: any = await uppy.upload();
         uppy.cancelAll();
         const images = createObjectsForApi(successful);
@@ -54,13 +57,13 @@ const CreatePostForm = ({ setModalOpen }: CreateFormProps) => {
           createPost({
             post: {
               description,
-              photos_attributes: images
+              photos_attributes: images,
             },
           })
         );
         setFileLoading(false);
       })();
-    }
+    } else dispatch(setPostActionError("Add at least one photo to post"));
   };
   const onCancelClick = () => {
     if (setModalOpen) setModalOpen(false);

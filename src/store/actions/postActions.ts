@@ -1,4 +1,3 @@
-import { responsiveFontSizes } from "@material-ui/core";
 import { Dispatch } from "redux";
 import api from "../../services/api";
 import history from "../../services/history";
@@ -92,6 +91,10 @@ export const fetchPostByUser =
 export const setIsPostsFetched =
   (value: boolean) => async (dispatch: Dispatch<PostDispatchTypes>) => {
     dispatch({ type: SET_IS_POSTS_FETCHED, payload: value });
+  };
+export const setPostActionError =
+  (message: string) => async (dispatch: Dispatch<PostDispatchTypes>) => {
+    dispatch({ type: POST_ACTION_ERROR, payload: { error: message } });
   };
 export const createPost =
   (post: PostToCreate) => async (dispatch: Dispatch<PostDispatchTypes>) => {

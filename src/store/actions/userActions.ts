@@ -1,4 +1,3 @@
-import { exception } from "console";
 import { Dispatch } from "redux";
 import api from "../../services/api";
 import history from "../../services/history";
